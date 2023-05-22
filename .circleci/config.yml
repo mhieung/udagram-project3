@@ -1,0 +1,41 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - run:
+          name: Install Dockerize
+          command: |
+            curl -L https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz | tar -C /tmp -xz
+            sudo mv /tmp/dockerize /usr/local/bin
+
+      - setup_remote_docker:
+          version: 20.10.7
+
+      - run:
+          name: "Build Docker Image"
+          command: |
+            docker build -t udagram-reverseproxy ./udagram-reverseproxy
+      - run:
+          name: "Tag Docker Image"
+          command: |
+            docker tag udagram-reverseproxy sudkul/udagram-reverseproxy:v1
+      - run:
+          name: "Push to Dockerhub"
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+            docker push sudkul/udagram-reverseproxy:v1
+
