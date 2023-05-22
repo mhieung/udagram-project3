@@ -29,31 +29,31 @@ jobs:
           name: "Build and tag udagram-api-user Docker image"
           command: |
             docker build -t udagram-api-user ./udagram-api-user
-            docker tag udagram-api-user sudkul/udagram-api-user:v1
+            docker tag udagram-api-user mhieung/udagram-api-user:v1
 
       - run:
           name: "Build and tag udagram-api-feed Docker image"
           command: |
             docker build -t udagram-api-feed ./udagram-api-feed
-            docker tag udagram-api-feed sudkul/udagram-api-feed:v1
+            docker tag udagram-api-feed mhieung/udagram-api-feed:v1
 
       - run:
           name: "Build and tag udagram-frontend Docker image"
           command: |
             docker build -t udagram-frontend ./udagram-frontend
-            docker tag udagram-frontend sudkul/udagram-frontend:v1
+            docker tag udagram-frontend mhieung/udagram-frontend:v1
 
       - run:
           name: "Build and tag udagram-reverseproxy Docker image"
           command: |
             docker build -t udagram-reverseproxy ./udagram-reverseproxy
-            docker tag udagram-reverseproxy sudkul/udagram-reverseproxy:v1
+            docker tag udagram-reverseproxy mhieung/udagram-reverseproxy:v1
 
       - run:
           name: "Push to Dockerhub mhieung/udagram-reverseproxy"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push sudkul/udagram-api-user:v1
-            docker push sudkul/udagram-api-feed:v1
-            docker push sudkul/udagram-frontend:v1
-            docker push sudkul/udagram-reverseproxy:v1
+            docker push mhieung/udagram-api-user:v1
+            docker push mhieung/udagram-api-feed:v1
+            docker push mhieung/udagram-frontend:v1
+            docker push mhieung/udagram-reverseproxy:v1
