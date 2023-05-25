@@ -33,22 +33,22 @@ jobs:
       - run:
           name: "Tag udagram-api-user Docker image"
           command: |
-            docker tag udagram-api-user mhieung/udagram-api-user:v2
+            docker tag udagram-api-user mhieung/udagram-api-user:v1
 
       - run:
           name: "Tag udagram-api-feed Docker image"
           command: |
-            docker tag udagram-api-feed mhieung/udagram-api-feed:v2
+            docker tag udagram-api-feed mhieung/udagram-api-feed:v1
 
       - run:
           name: "Tag udagram-frontend Docker image"
           command: |
-            docker tag udagram-frontend mhieung/udagram-frontend:v2
+            docker tag udagram-frontend mhieung/udagram-frontend:v1
 
       - run:
           name: "Tag udagram-reverseproxy Docker image"
           command: |
-            docker tag udagram-reverseproxy mhieung/udagram-reverseproxy:v2
+            docker tag udagram-reverseproxy mhieung/udagram-reverseproxy:v1
 
       - run:
           name: "Push to Dockerhub"
