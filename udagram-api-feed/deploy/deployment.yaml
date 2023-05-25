@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-api-feed
+  name: backend-feed
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend-feed
-          image: mhieung/udagram-api-feed:v2
+          image: mhieung/udagram-api-feed:v1
           ports:
             - containerPort: 8080
           env:
@@ -55,11 +55,11 @@ spec:
                   key: URL
             - name: JWT_SECRET
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: env-secret
                   key: JWT_SECRET
             - name: POSTGRES_PASSWORD
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: env-secret
                   key: POSTGRES_PASSWORD
