@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/2
 kind: Deployment
 metadata:
   name: udagram-frontend
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mhieung/udagram-frontend:v1
+          image: mhieung/udagram-frontend:v2
           ports:
             - containerPort: 8100
