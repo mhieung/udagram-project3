@@ -23,7 +23,7 @@ jobs:
             sudo mv /tmp/dockerize /usr/local/bin
 
       - setup_remote_docker:
-          version: 20.10.7
+          version: 23.0.5
 
       - run:
           name: "Build Docker images in parralel"
