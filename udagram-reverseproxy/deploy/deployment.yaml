@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: udagram-reverseproxy
+      app: reverseproxy
   template:
     metadata:
       labels:
-        app: udagram-reverseproxy
+        app: reverseproxy
     spec:
       containers:
         - name: reverseproxy
-          image: mhieung/udagram-reverseproxy:v1
+          image: mhieung/reverseproxy:v1
           ports:
             - containerPort: 8080

@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: udagram-api-feed
+      app: backend-feed
   template:
     metadata:
       labels:
-        app: udagram-api-feed
+        app: backend-feed
     spec:
       containers:
         - name: backend-feed
-          image: mhieung/udagram-api-feed:v1
+          image: mhieung/backend-feed:v1
           ports:
             - containerPort: 8080
           env:
