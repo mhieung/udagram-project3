@@ -2,7 +2,7 @@ version: 2.1
 
 workflows:
   version: 2
-  deploy-master:
+  build-master:
     jobs:
       - build:
           filters:
@@ -28,7 +28,7 @@ jobs:
       - run:
           name: "Build Docker images in parralel"
           command: |
-            docker-compose -f ../docker-compose-build.yaml build --parallel
+            docker-compose -f ./docker-compose-build.yaml build --parallel
 
       - run:
           name: "Tag udagram-api-user Docker image"
