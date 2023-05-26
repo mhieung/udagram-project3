@@ -3,7 +3,6 @@ kind: ConfigMap
 metadata:
   name: env-configmap
 data:
-  POSTGRES_USERNAME: hieudevpostgress
   POSTGRES_HOST: hieudevpostgress.cad4oj2nucpu.us-east-1.rds.amazonaws.com
   POSTGRES_DB: postgres
   AWS_BUCKET: test-010440084304-dev
