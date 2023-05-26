@@ -41,7 +41,7 @@ jobs:
           name: "Build and tag frontend Docker image"
           command: |
             docker build -t frontend ./udagram-frontend
-            docker tag frontend mhieung/frontend:v2
+            docker tag frontend mhieung/frontend:v6
 
       - run:
           name: "Build and tag reverseproxy Docker image"
@@ -55,5 +55,5 @@ jobs:
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
             docker push mhieung/backend-user:v2
             docker push mhieung/backend-feed:v2
-            docker push mhieung/frontend:v2
+            docker push mhieung/frontend:v6
             docker push mhieung/reverseproxy:v2
