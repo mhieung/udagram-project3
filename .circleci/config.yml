@@ -31,31 +31,6 @@ jobs:
             docker-compose -f ./docker-compose-build.yaml build --parallel
 
       - run:
-          name: "echo docker images"
-          command: |
-            docker images
-
-      - run:
-          name: "Tag backend-user Docker image"
-          command: |
-            docker tag backend-user mhieung/backend-user:v1
-
-      - run:
-          name: "Tag backend-feed Docker image"
-          command: |
-            docker tag backend-feed mhieung/backend-feed:v1
-
-      - run:
-          name: "Tag frontend Docker image"
-          command: |
-            docker tag frontend mhieung/frontend:v1
-
-      - run:
-          name: "Tag reverseproxy Docker image"
-          command: |
-            docker tag reverseproxy mhieung/reverseproxy:v1
-
-      - run:
           name: "Push to Dockerhub"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
