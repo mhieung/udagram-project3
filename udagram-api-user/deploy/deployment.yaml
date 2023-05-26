@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend-user
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: backend-user
@@ -15,13 +15,6 @@ spec:
       containers:
         - name: backend-user
           image: mhieung/backend-user:v1
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "250m"
-            limits:
-              memory: "2Gi"
-              cpu: "500m"
           ports:
             - containerPort: 8080
           env:
@@ -50,23 +43,23 @@ spec:
                 configMapKeyRef:
                   name: env-configmap
                   key: POSTGRES_HOST
-            - name: POSTGRES_USERNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: env-configmap
-                  key: POSTGRES_USERNAME
             - name: URL
               valueFrom:
                 configMapKeyRef:
                   name: env-configmap
                   key: URL
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: POSTGRES_USERNAME
             - name: JWT_SECRET
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: env-secret
                   key: JWT_SECRET
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: env-secret
                   key: POSTGRES_PASSWORD
