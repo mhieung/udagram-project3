@@ -26,34 +26,35 @@ jobs:
           version: 20.10.7
 
       - run:
-          name: "Build and tag backend-user Docker image"
+          name: "Build Docker images in parralel"
           command: |
-            docker build -t backend-user ./udagram-api-user
-            docker tag backend-user mhieung/backend-user:v2
+            docker-compose -f ./docker-compose-build.yaml build --parallel
 
       - run:
-          name: "Build and tag backend-feed Docker image"
+          name: "Tag backend-user Docker image"
           command: |
-            docker build -t backend-feed ./udagram-api-feed
-            docker tag backend-feed mhieung/backend-feed:v2
+            docker tag backend-user mhieung/backend-user:v1
 
       - run:
-          name: "Build and tag frontend Docker image"
+          name: "Tag backend-feed Docker image"
           command: |
-            docker build -t frontend ./udagram-frontend
-            docker tag frontend mhieung/frontend:v6
+            docker tag backend-feed mhieung/backend-feed:v1
 
       - run:
-          name: "Build and tag reverseproxy Docker image"
+          name: "Tag frontend Docker image"
           command: |
-            docker build -t reverseproxy ./udagram-reverseproxy
-            docker tag reverseproxy mhieung/reverseproxy:v2
+            docker tag frontend mhieung/frontend:v1
+
+      - run:
+          name: "Tag reverseproxy Docker image"
+          command: |
+            docker tag reverseproxy mhieung/reverseproxy:v1
 
       - run:
           name: "Push to Dockerhub"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push mhieung/backend-user:v2
-            docker push mhieung/backend-feed:v2
-            docker push mhieung/frontend:v6
-            docker push mhieung/reverseproxy:v2
+            docker push mhieung/backend-user:v1
+            docker push mhieung/backend-feed:v1
+            docker push mhieung/frontend:v1
+            docker push mhieung/reverseproxy:v1
