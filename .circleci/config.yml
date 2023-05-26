@@ -29,6 +29,10 @@ jobs:
           name: "Build Docker images in parralel"
           command: |
             docker-compose -f ./docker-compose-build.yaml build --parallel
+
+      - run:
+          name: "echo docker images"
+          command: |
             docker images
 
       - run:
