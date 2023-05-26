@@ -28,9 +28,8 @@ jobs:
       - run:
           name: "Build Docker images in parralel"
           command: |
-            docker -v
-            docker-compose -v
             docker-compose -f ./docker-compose-build.yaml build --parallel
+            docker images
 
       - run:
           name: "Tag backend-user Docker image"
