@@ -43,7 +43,7 @@ jobs:
       - run:
           name: "Tag frontend Docker image"
           command: |
-            docker tag frontend mhieung/frontend:v1
+            docker tag frontend mhieung/frontend:v6
 
       - run:
           name: "Tag reverseproxy Docker image"
@@ -54,7 +54,4 @@ jobs:
           name: "Push to Dockerhub"
           command: |
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push mhieung/backend-user:v1
-            docker push mhieung/backend-feed:v1
-            docker push mhieung/frontend:v1
-            docker push mhieung/reverseproxy:v1
+            docker push mhieung/frontend:v6
