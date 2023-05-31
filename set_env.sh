@@ -2,9 +2,9 @@
 # DO NOT STORE YOUR CREDENTIALS INTO GIT
 export POSTGRES_USERNAME=hieudevpostgress
 export POSTGRES_PASSWORD=hieudevpostgress
-export POSTGRES_HOST=hieudevpostgress.cad4oj2nucpu.us-east-1.rds.amazonaws.com
+export POSTGRES_HOST=hieudevpostgress.cs85cfzix4k4.us-east-1.rds.amazonaws.com
 export POSTGRES_DB=postgres
-export AWS_BUCKET=test-010440084304-dev
+export AWS_BUCKET=postgressdb-369341308689-dev
 export AWS_REGION=us-east-1
 export AWS_PROFILE=default
 export JWT_SECRET=testing

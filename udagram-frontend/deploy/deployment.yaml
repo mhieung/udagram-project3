@@ -15,5 +15,10 @@ spec:
       containers:
         - name: frontend
           image: mhieung/frontend:v6
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
           ports:
             - containerPort: 8100
